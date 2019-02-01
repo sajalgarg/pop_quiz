@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import psycopg2
-import urlparse
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,7 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'pop_quiz.urls'
 
-redis_url = urlparse.urlparse(os.environ.get('REDIS_URL'))
+redis_url = urlparse(os.environ.get('REDIS_URL'))
 
 CHANNEL_LAYERS = {
     "default": {
@@ -87,7 +87,7 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
+url = urlparse(os.environ.get('DATABASE_URL'))
 
 DATABASES = {
     'default': {
